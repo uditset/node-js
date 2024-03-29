@@ -1,0 +1,29 @@
+{
+  "name": "leaning-node",
+  "version": "1.0.0",
+  "description": "learning Node js first time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uditset/node-js.git"
+  },
+  "keywords": [
+    "learning",
+    "node",
+    "js"
+  ],
+  "author": "udit sethi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uditset/node-js/issues"
+  },
+  "homepage": "https://github.com/uditset/node-js#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "colors": "^1.4.0",
+    "simple-node-logger": "^21.8.12"
+  }
+}

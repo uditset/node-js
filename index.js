@@ -1,33 +1,28 @@
-// import { students } from "./script/constants";
-const appConstants = require('./script/constants');
-const http = require('http');
-const {writeFileSync} = require('fs');
-const color = require('colors');
-// const chalk = require('chalk').default;
-http.createServer((request,response)=>{
-    response.write("This node server is running at port 4500");
-    response.end();
-}).listen(4500);
+const constant = require('./script/constants');
+const fs =require("fs");
+console.log("trying nodemon");
 
-const a = 10; 
-const b = 20;
-console.log(a+b);
-for(i=1;i<=10;i++)
+const terminalInputs = process.argv;
+console.log(terminalInputs)
+if(terminalInputs?.length === 5)
 {
-    console.log(i);
+    if(terminalInputs?.[2]==="add")
+    {
+        fs.writeFileSync(terminalInputs?.[3],terminalInputs?.[4])
+    }
 }
-const students = appConstants?.students;
-const dummyVariable = appConstants?.dummyVariable?.t;
-const variable = appConstants?.variable;
-const constant = appConstants?.constant;
-console.log(color.bgMagenta(students));
-console.log(dummyVariable);
-console.log(variable===20);
-console.log(constant===20);
-students?.map((item)=>console.log(item?.name));
-console.log(students?.filter(item=>item.name==="Udit"));
-console.log(variable?.length)
-variable?.length && console.log(variable?.filter(item => item.value==20));
-writeFileSync("onlyFunction.text","Dobara run kr diya This is my first creating and writting in file test to learn what is non global module.");
-console.log(__dirname);
-console.log(__filename);
+else if(terminalInputs?.length === 4)
+{
+    if(terminalInputs?.[2]==="remove")
+    {
+        fs.rmSync(terminalInputs?.[3]);
+    }
+}
+const http = require("http");
+http.createServer((req,resp)=>{
+   //Defining header of response
+   resp.writeHead(200,{"Content-Type": "Application/json"});
+   //writing the content in the response;
+   resp.write(JSON.stringify(constant));
+   resp.end();
+}).listen(4500);

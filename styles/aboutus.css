@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: blueviolet;
+}
+
+header{
+    background-color: azure;
+    font-size: 50px;
+    font: 300;
+    color: chartreuse;
+}

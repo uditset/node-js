@@ -6,29 +6,17 @@ const port = 10000;
 const pagesPath = path.join(__dirname,"pages");
 
 app.listen(port,()=> console.log(`App is running on the port ${port}`));
+app.set('view engine','ejs');
 
-app.use(express.static(pagesPath));
+// app.use(express.static(pagesPath));
 
 
 app.get("/",(req,response)=>{
-    response.send(`
-        <div style="background: orange;">
-            <h1>This is the home page</h1>
-            <label for="name"> Name </label>
-            <input type="text" placeholder="Enter your name" id="name" name="name" style="border: 1px solid blue">
-            <a href="/aboutus">About us</a>
-            <a href="/">Home</a>
-        </div>
-    `);
+    response.sendFile(pagesPath + "/index.html");
 })
 
 app.get("/aboutUs",(req,response)=>{
-    response.send(`
-    <div>
-        This is the About us page
-        <a href="/">Home</a>
-    </div>
-    `);
+    response.sendFile(pagesPath + "/aboutUs.html");
 })
 
 app.post("/aboutUs",(req,resp)=>{
@@ -37,4 +25,24 @@ app.post("/aboutUs",(req,resp)=>{
     resp.status(200);
     resp.json(constObject);
 })
+
+app.get("/profile",(req,resp)=>{
+    const user = {
+        name: "Udit sethi",
+        designation: "Software Engineer",
+        Company: "Amazon",
+        techList: ["Java" , "ReactJs" , "NodeJs" , "MongoDb" , "Spring Boot"],
+    }
+    resp.render("profile",{user});
+})
+
+app.get('/helpus',(_,resp)=>{
+    resp.render('helpus');
+})
+
+app.get("*",(_,resp)=>{
+    resp.status(404).sendFile(pagesPath + "/pageNotFound.html");
+})
+
+
 

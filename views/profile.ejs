@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile EJS</title>
+</head>
+<body>
+    <%- include('header.ejs'); %>
+    <div>
+        welcome , <%= JSON.stringify(user)%>
+    </div>
+    <ul id="techListB">
+        <% user.techList.forEach((item)=>{ %>
+           <li><%= item %></li>
+        <%})%>
+    </ul>
+</body>
+<script>
+    console.log("Script is running")
+</script>
+</html>
